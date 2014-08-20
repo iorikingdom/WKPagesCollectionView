@@ -49,14 +49,14 @@
 }
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
-//    NSLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
+//    IMLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
     UICollectionViewLayoutAttributes* attributes=[super layoutAttributesForItemAtIndexPath:path];
     [self makeRotateTransformForAttributes:attributes];
     return attributes;
 }
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
-//    NSLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
+//    IMLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     for (UICollectionViewLayoutAttributes* attributes in array) {
         [self makeRotateTransformForAttributes:attributes];
@@ -65,7 +65,7 @@
 }
 #pragma mark Collection Update
 -(void)prepareForCollectionViewUpdates:(NSArray *)updateItems{
-//    NSLog(@"prepareForCollectionViewUpdates");
+//    IMLog(@"prepareForCollectionViewUpdates");
     [super prepareForCollectionViewUpdates:updateItems];
     self.deleteIndexPaths=[NSMutableArray array];
     self.insertIndexPaths=[NSMutableArray array];
@@ -79,24 +79,24 @@
     }
 }
 -(void)finalizeCollectionViewUpdates{
-//    NSLog(@"finalizeCollectionViewUpdates");
+//    IMLog(@"finalizeCollectionViewUpdates");
     [super finalizeCollectionViewUpdates];
     self.deleteIndexPaths=nil;
     self.insertIndexPaths=nil;
 }
 -(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
     UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-//    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
+//    IMLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
     if ([self.insertIndexPaths containsObject:itemIndexPath]){
         if (!attributes)
             attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
-        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-90.0f);
+        CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(-1*WKPagesCollectionViewSlideThreshold);
         attributes.transform3D=rotateTransform;
     }
     return attributes;
 }
 -(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
+    IMLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
     UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
     if ([self.deleteIndexPaths containsObject:itemIndexPath]){
         if (!attributes){
@@ -116,7 +116,7 @@
     normalizedDistance=fmaxf(normalizedDistance, 0.0f);
     CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
     //CGFloat rotate=RotateDegree;
-//    NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
+//    IMLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
 //          attributes.indexPath.row,normalizedDistance,rotate);
     ///Angle and angle will cross a small cell, even if you set zIndex is useless here to set the angle of the bottom of the cell is growing
     CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);

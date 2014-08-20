@@ -100,7 +100,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
 #pragma mark - Actions
 ///Display status
 -(void)showCellToHighLightAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(BOOL))completion{
-    NSLog(@"row:%d",indexPath.row);
+    IMLog(@"row:%d",indexPath.row);
     if (_isHighLight){
         return;
     }
@@ -130,7 +130,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToTop;
                 }
                 else if (visibleIndexPath.row>indexPath.row){
-                    NSLog(@"indexPath:%d,visibleIndexPath:%d",indexPath.row,visibleIndexPath.row);
+                    IMLog(@"indexPath:%d,visibleIndexPath:%d",indexPath.row,visibleIndexPath.row);
                     cell.showingState=WKPagesCollectionViewCellShowingStateBackToBottom;
                 }
                 else{
@@ -248,7 +248,7 @@ CGFloat const TOP_OFFSCREEN_MARGIN = 120;
     }
     return view;
 //    UIView* view=[super hitTest:point withEvent:event];
-//    NSLog(@"%@,%d",NSStringFromClass([view class]),view.tag);
+//    IMLog(@"%@,%d",NSStringFromClass([view class]),view.tag);
 //    return view;
 }
 @end

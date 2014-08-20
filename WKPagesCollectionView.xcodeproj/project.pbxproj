@@ -24,6 +24,7 @@
 		68D7C1F318347A08006B418C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D218347A08006B418C /* Foundation.framework */; };
 		68D7C1F418347A08006B418C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C1D618347A08006B418C /* UIKit.framework */; };
 		68D7C20E18349B4C006B418C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7C20D18349B4C006B418C /* QuartzCore.framework */; };
+		8BDFC7F419A44F1B0050E980 /* WKWebViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFC7F319A44F1B0050E980 /* WKWebViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		68D7C1F018347A08006B418C /* WKPagesCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WKPagesCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D7C1F118347A08006B418C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		68D7C20D18349B4C006B418C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8BDFC7F219A44F1B0050E980 /* WKWebViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewManager.h; sourceTree = "<group>"; };
+		8BDFC7F319A44F1B0050E980 /* WKWebViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				68BDCE7918432CCA00DB81A2 /* WKPagesCollectionViewCell.m */,
 				68BDCE7A18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.h */,
 				68BDCE7B18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m */,
+				8BDFC7F219A44F1B0050E980 /* WKWebViewManager.h */,
+				8BDFC7F319A44F1B0050E980 /* WKWebViewManager.m */,
 			);
 			path = WKPagesCollectionView;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				68D7C1E318347A08006B418C /* AppDelegate.m in Sources */,
 				68BDCE7C18432CCA00DB81A2 /* WKPagesCollectionView.m in Sources */,
 				68D7C1DF18347A08006B418C /* main.m in Sources */,
+				8BDFC7F419A44F1B0050E980 /* WKWebViewManager.m in Sources */,
 				68BDCE7E18432CCA00DB81A2 /* WKPagesCollectionViewFlowLayout.m in Sources */,
 				68BDCE7D18432CCA00DB81A2 /* WKPagesCollectionViewCell.m in Sources */,
 			);

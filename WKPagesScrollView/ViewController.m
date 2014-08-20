@@ -58,9 +58,9 @@
     [super dealloc];
 }
 -(IBAction)onButtonTitle:(id)sender{
-    NSLog(@"button");
+    IMLog(@"button");
     [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
-        NSLog(@"dismiss completed");
+        IMLog(@"dismiss completed");
     }];
 }
 -(IBAction)onButtonAdd:(id)sender{
@@ -71,7 +71,7 @@
     return _array.count;
 }
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"cellForItemAtIndexPath:%d",indexPath.row);
+//    IMLog(@"cellForItemAtIndexPath:%d",indexPath.row);
     static NSString* identity=@"cell";
     WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
     cell.collectionView=collectionView;

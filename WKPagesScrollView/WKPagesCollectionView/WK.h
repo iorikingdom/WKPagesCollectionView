@@ -10,6 +10,11 @@
 #define WKPagesScrollView_WK_h
 
 #define WKPagesCollectionViewPageSpacing 160.0f
+#define WKPagesCollectionViewSlideThreshold 70.0f
+
+#ifndef IMLog
+#define IMLog NSLog
+#endif
 
 static inline CATransform3D WKFlipCATransform3DMakePerspective(CGPoint center, float disZ)
 {
@@ -39,7 +44,7 @@ static inline UIImage* makeImageForView(UIView*view){
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage* image=UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    NSLog(@"makeImage duration:%f", CFAbsoluteTimeGetCurrent()-startTime);
+    IMLog(@"makeImage duration:%f", CFAbsoluteTimeGetCurrent()-startTime);
     return image;
 }
 #endif

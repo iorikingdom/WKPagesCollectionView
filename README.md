@@ -42,7 +42,7 @@
 		    return _array.count;
 		}
 		-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-		//    NSLog(@"cellForItemAtIndexPath:%d",indexPath.row);
+		//    IMLog(@"cellForItemAtIndexPath:%d",indexPath.row);
 		    static NSString* identity=@"cell";
 		    WKPagesCollectionViewCell* cell=(WKPagesCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identity forIndexPath:indexPath];
 		    cell.collectionView=collectionView;
@@ -77,15 +77,15 @@
 * 展开显示一个具体的页面,这个在点击页面的时候会自动实现，也可以像下面这样代码调用;
 
 		[_collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
-	        NSLog(@"highlight completed");
+	        IMLog(@"highlight completed");
     	}];
     	
 * 停止展开，回到普通的滚动模式
 
 		-(IBAction)onButtonTitle:(id)sender{
-		    NSLog(@"button");
+		    IMLog(@"button");
 		    [_collectionView dismissFromHightLightWithCompletion:^(BOOL finished) {
-		        NSLog(@"dismiss completed");
+		        IMLog(@"dismiss completed");
 		    }];
 		}
 
@@ -113,7 +113,7 @@
 		    normalizedDistance=fmaxf(normalizedDistance, 0.0f);
 		    CGFloat rotate=RotateDegree+20.0f*normalizedDistance;
 		    //CGFloat rotate=RotateDegree;
-		    NSLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
+		    IMLog(@"makeRotateTransformForAttributes:row:%d,normalizedDistance:%f,rotate:%f",
 		          attributes.indexPath.row,normalizedDistance,rotate);
 		    ///角度大的会和角度小的cell交叉，即使设置zIndex也没有用，这里设置底部的cell角度越来越大
 		    CATransform3D rotateTransform=WKFlipCATransform3DPerspectSimpleWithRotate(rotate);
@@ -124,14 +124,14 @@
 ```
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path
 {
-    NSLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
+    IMLog(@"layoutAttributesForItemAtIndexPath:%d",path.row);
     UICollectionViewLayoutAttributes* attributes=[super layoutAttributesForItemAtIndexPath:path];
     [self makeRotateTransformForAttributes:attributes];
     return attributes;
 }
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    NSLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
+    IMLog(@"layoutAttributesForElementsInRect:%@",NSStringFromCGRect(rect));
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     for (UICollectionViewLayoutAttributes* attributes in array) {
         [self makeRotateTransformForAttributes:attributes];
@@ -152,7 +152,7 @@
 		    if (self.showingState==WKPagesCollectionViewCellShowingStateNormal){
 		        if (scrollView.contentOffset.x>=90.0f){
 		            NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-		            NSLog(@"delete cell at %d",indexPath.row);
+		            IMLog(@"delete cell at %d",indexPath.row);
 		            //self.alpha=0.0f;
 		            ///删除数据
 		            id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
@@ -174,7 +174,7 @@
 
 		-(UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
 		    UICollectionViewLayoutAttributes* attributes=[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-		    NSLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
+		    IMLog(@"initialLayoutAttributesForAppearingItemAtIndexPath:%d",itemIndexPath.row);
 		    if ([self.insertIndexPaths containsObject:itemIndexPath]){
 		        if (!attributes)
 		            attributes=[self layoutAttributesForItemAtIndexPath:itemIndexPath];
@@ -184,7 +184,7 @@
 		    return attributes;
 		}
 		-(UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-		    NSLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
+		    IMLog(@"finalLayoutAttributesForDisappearingItemAtIndexPath:%d",itemIndexPath.row);
 		    UICollectionViewLayoutAttributes* attributes=[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
 		    if ([self.deleteIndexPaths containsObject:itemIndexPath]){
 		        if (!attributes){

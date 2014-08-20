@@ -71,10 +71,10 @@
 }
 -(IBAction)onTapGesture:(UITapGestureRecognizer*)tapGesture{
     NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-//    NSLog(@"row:%d",indexPath.row);
+//    IMLog(@"row:%d",indexPath.row);
 //    [self.collectionView.delegate collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
     [(WKPagesCollectionView*)self.collectionView showCellToHighLightAtIndexPath:indexPath completion:^(BOOL finished) {
-        NSLog(@"highlight completed");
+        IMLog(@"highlight completed");
     }];
 }
 #pragma mark - Properties
@@ -133,9 +133,9 @@
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if (self.showingState==WKPagesCollectionViewCellShowingStateNormal){
-        if (scrollView.contentOffset.x>=90.0f){
+        if (scrollView.contentOffset.x>=WKPagesCollectionViewSlideThreshold){
             NSIndexPath* indexPath=[self.collectionView indexPathForCell:self];
-            NSLog(@"delete cell at %d",indexPath.row);
+            IMLog(@"delete cell at %d",indexPath.row);
             //self.alpha=0.0f;
             ///Delete data
             id<WKPagesCollectionViewDataSource> pagesDataSource=(id<WKPagesCollectionViewDataSource>)self.collectionView.dataSource;
